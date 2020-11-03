@@ -1,24 +1,34 @@
 import React, {useEffect, useState} from 'react';
+import {Router} from "@reach/router";
+import Question from './Question';
+
 const API_URL = process.env.REACT_APP_API;
 
 function App() {
-  const [data, setData] = useState("No data :(");
-  
+  const [questions, setQuestions] = useState("No data :(");
+
   useEffect(() => {
     async function getData() {
-      const url = `${API_URL}/hello`;
+      const url = `${API_URL}/question`;
       const response = await fetch(url);
-      const data = await response.json();
-      setData(data.msg);
+      const questions = await response.json();
+      setQuestions(questions.msg);
     }
     getData();
-  }, []); 
+  }, []);
+
+  function getQuestion(id) {
+    const question = questions.find(element => element.id === parseInt(id));
+    return question;
+  }
 
   return (
-    <>
-      <h1>MERN App!</h1>
-      <p>Data from server: {data}</p>
-    </>
+      <>
+        <h1>Cooking App</h1>
+        <Router>
+          <Question path="/recipe/:id" getRecipe={getQuestion()}/>
+        </Router>
+      </>
   );
 }
 

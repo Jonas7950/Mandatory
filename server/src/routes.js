@@ -3,7 +3,7 @@ module.exports = () => {
   const router = express.Router();
 
   /**** Routes ****/
-  router.get('/hello', async (req, res) => {
+  router.get('/question', async (req, res) => {
     res.json({msg: "Hello, world!"});
   });
 
