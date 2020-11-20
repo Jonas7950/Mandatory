@@ -1,14 +1,13 @@
 import React from 'react';
 import {Link} from "@reach/router";
 
-function question(props) {
+function Question(props) {
 
 
     if (props){
         const id = props.id;
-        question = props.getQuestion(id);
+        Question = props.getQuestion(id);
     }
-
 
     //let list = question.answers.map(answer =>
         //<li key={answer}>{answer}</li>
@@ -16,10 +15,10 @@ function question(props) {
 
     return (
         <>
-            <h3>{question.title}</h3>
+            <h3>{Question.title}</h3>
             <Link to="/">Back</Link>
         </>
     );
 }
 
-export default question();
+export default Question();
