@@ -3,7 +3,7 @@ import {Link} from "@reach/router";
 
 import AddQuestion from "./addQuestion";
 
-function Questions(props) {
+function Movies(props) {
     let questions = props.questions;
 
     const mapFunction = element =>
@@ -25,4 +25,4 @@ function Questions(props) {
     );
 }
 
-export default Questions;
+export default Movies;

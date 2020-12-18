@@ -1,12 +1,12 @@
 import React from 'react';
 import {Link} from "@reach/router";
 
-function Question(props) {
+function Movie(props) {
 
 
     if (props){
         const id = props.id;
-        Question = props.getQuestion(id);
+        Movie = props.getQuestion(id);
     }
 
     //let list = question.answers.map(answer =>
@@ -15,10 +15,10 @@ function Question(props) {
 
     return (
         <>
-            <h3>{Question.title}</h3>
+            <h3>{Movie.title}</h3>
             <Link to="/">Back</Link>
         </>
     );
 }
 
-export default Question();
+export default Movie;

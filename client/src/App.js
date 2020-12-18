@@ -1,39 +1,37 @@
 import React, {useEffect, useState} from 'react';
 import {Router} from "@reach/router";
-import Question from './Question.js';
+import Movie from './Movie.js';
 const API_URL = process.env.REACT_APP_API;
 
 function App() {
-  const [questions, setQuestions] = useState([Question]);
+  const [movies, setMovies] = useState([Movie]);
 
   useEffect(() => {
     async function getData() {
-      //const url = `${API_URL}/question`;
-      const url = "questions.json"
+      const url = `${API_URL}/movies`;
       const response = await fetch(url);
-      const questions = await response.json();
-      console.log(questions);
-      setQuestions(questions);
+      const movies = await response.json();
+        console.log(movies);
+        setMovies(movies);
     }
     getData();
   }, []);
 
-  function getQuestion(id) {
-    if (questions !== undefined){
+  function getMovie(id) {
+    if (movies !== undefined){
       console.log("questions exists")
-      const question = questions.find(element => element.id === parseInt(id));
-      console.log(question);
-      return question;
+      const movie = movies.find(element => element.id === parseInt(id));
+      console.log(movie);
+      return movie;
     }
   }
 
   return (
       <>
-        <h1>Flow Overstack</h1>
-
-        <Router>
-          <Question path="/Question/:id" getQuestion={getQuestion(1)}/>
-        </Router>
+        <h1>Movies that exists</h1>
+          <Router>
+              <Movie path="/movie/:id" getMovie={getMovie}/>
+          </Router>
       </>
   );
 }
